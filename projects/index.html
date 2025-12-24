@@ -23,7 +23,7 @@
     .nav {
       display: flex;
       gap: 10px;
-      margin: 14px 0 22px;
+      margin: 14px 0 10px;
       flex-wrap: wrap;
     }
     .nav a {
@@ -32,6 +32,22 @@
       border-radius: 12px;
       font-weight: 600;
     }
+
+    .cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid rgba(127,127,127,0.35);
+      border-radius: 14px;
+      font-weight: 700;
+      background: rgba(127,127,127,0.08);
+    }
+    .btn:hover { background: rgba(127,127,127,0.14); }
 
     .grid { display: grid; gap: 16px; }
 
@@ -56,8 +72,35 @@
     .links a {
       display: inline-block;
       margin-right: 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
+
+    .schema {
+      margin-top: 10px;
+      border: 1px solid rgba(127,127,127,0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(127,127,127,0.03);
+    }
+    .schema table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .schema th, .schema td {
+      padding: 10px 12px;
+      border-top: 1px solid rgba(127,127,127,0.18);
+      vertical-align: top;
+    }
+    .schema tr:first-child th, .schema tr:first-child td { border-top: 0; }
+    .schema th {
+      width: 160px;
+      text-align: left;
+      opacity: 0.9;
+      font-weight: 800;
+      background: rgba(127,127,127,0.06);
+    }
+    .schema code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
     footer {
       margin-top: 28px;
@@ -85,12 +128,17 @@
         <a href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
         <a href="https://github.com/agmewkill">GitHub</a>
       </nav>
+
+      <!-- Back/Home CTA -->
+      <div class="cta" aria-label="Primary actions">
+        <a class="btn" href="/">← Back to Home</a>
+      </div>
     </header>
 
     <main class="grid">
 
       <!-- Encampments project -->
-      <section class="card">
+      <section class="card" id="encampments">
         <h2>Homeless Encampments & Social Determinants of Health (San Diego)</h2>
         <div class="meta">
           Tract-level analysis • Privacy-preserving aggregation • Census & ACS
@@ -99,11 +147,36 @@
         <ul>
           <li>Integrated tract-aggregated encampment counts with ACS socioeconomic indicators</li>
           <li>Cleaned and normalized demographic and economic variables</li>
-          <li>Joined datasets via census tract GEOID (no point-level data)</li>
-          <li>Produced analysis-ready tables for descriptive and statistical modeling</li>
+          <li>Joined datasets via census tract <code>GEOID</code> (no point-level data)</li>
+          <li>Produced analysis-ready tables for descriptives and statistical modeling</li>
         </ul>
 
-        <div class="links">
+        <!-- Tiny schema table -->
+        <div class="schema" role="region" aria-label="Encampments dataset schema (summary)">
+          <table>
+            <tr>
+              <th>Key</th>
+              <td><code>GEOID</code> (Census tract identifier)</td>
+            </tr>
+            <tr>
+              <th>Encampments</th>
+              <td><code>encampments_ct</code> (tract-aggregated count)</td>
+            </tr>
+            <tr>
+              <th>ACS examples</th>
+              <td>
+                <code>med_hh_income</code>, <code>pct_poverty</code>, <code>pct_uninsured</code>,
+                <code>pct_rent_burdened</code> (derived from ACS 5-year)
+              </td>
+            </tr>
+            <tr>
+              <th>Grain</th>
+              <td>Census tract (privacy-preserving; no point locations)</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="links" style="margin-top: 10px;">
           <a href="/projects/encampments/">Project page</a>
           <a href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/encampments">Code</a>
           <a href="/projects/pitc-acs-correlation.html">Related: PITC × ACS</a>
@@ -111,14 +184,14 @@
       </section>
 
       <!-- PITC × ACS project -->
-      <section class="card">
+      <section class="card" id="pitc-acs">
         <h2>PITC × ACS Correlations (p5.js)</h2>
         <div class="meta">
-          One project, two parts: methods write-up + interactive demo • p5.js
+          Methods write-up + interactive demo • p5.js • CSV + GeoJSON
         </div>
 
         <ul>
-          <li>Part 1: written analysis describing data sources, assumptions, and interpretation</li>
+          <li>Part 1: written analysis describing sources, assumptions, and interpretation</li>
           <li>Part 2: interactive tract map with year slider and Pearson r panel</li>
           <li>Client-side ingestion of CSV + GeoJSON for exploratory QA and communication</li>
         </ul>
@@ -153,4 +226,3 @@
   </script>
 </body>
 </html>
-
