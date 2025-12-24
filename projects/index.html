@@ -7,6 +7,7 @@
   <title>Projects — Annie Mewkill</title>
 
   <style>
+    :root { color-scheme: light dark; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -17,7 +18,7 @@
 
     header { display: grid; gap: 12px; }
     h1 { margin: 0; font-size: 2rem; letter-spacing: -0.02em; }
-    .lead { max-width: 70ch; opacity: 0.9; }
+    .lead { max-width: 70ch; opacity: 0.9; margin: 0; }
 
     .nav {
       display: flex;
@@ -32,10 +33,7 @@
       font-weight: 600;
     }
 
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
+    .grid { display: grid; gap: 16px; }
 
     .card {
       border: 1px solid rgba(127,127,127,0.25);
@@ -44,10 +42,7 @@
       background: rgba(127,127,127,0.05);
     }
 
-    .card h2 {
-      margin: 0 0 6px;
-      font-size: 1.2rem;
-    }
+    .card h2 { margin: 0 0 6px; font-size: 1.2rem; }
 
     .meta {
       font-size: 0.95rem;
@@ -58,11 +53,7 @@
     ul { margin: 8px 0 12px; padding-left: 18px; }
     li { margin: 4px 0; }
 
-    .links a {
-      display: inline-block;
-      margin-right: 12px;
-      font-weight: 600;
-    }
+    .links a { display: inline-block; margin-right: 12px; font-weight: 600; }
 
     footer {
       margin-top: 28px;
@@ -84,23 +75,19 @@
         and analysis-ready outputs.
       </p>
 
-      <!-- Simple site navigation -->
-      <nav class="nav">
-        <a href="../index.html">Home</a>
-        <a href="../pipelines/geospatial-data-pipelines/">Pipelines</a>
-        <a href="../assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
+      <nav class="nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/pipelines/geospatial-data-pipelines/">Pipelines</a>
+        <a href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
         <a href="https://github.com/agmewkill">GitHub</a>
       </nav>
     </header>
 
     <main class="grid">
 
-      <!-- Project 1 -->
       <section class="card">
         <h2>Homeless Encampments & Social Determinants of Health (San Diego)</h2>
-        <div class="meta">
-          End-to-end geospatial workflow • Python / GeoPandas • Census & ACS
-        </div>
+        <div class="meta">End-to-end geospatial workflow • Python / GeoPandas • Census & ACS</div>
 
         <ul>
           <li>Ingested ACS tabular data and TIGER/Line boundary geometries</li>
@@ -110,17 +97,14 @@
         </ul>
 
         <div class="links">
-          <a href="encampments-leaflet.html">Project page</a>
-          <a href="../pipelines/geospatial-data-pipelines/">Pipeline code</a>
+          <a href="/projects/encampments-leaflet.html">Project page</a>
+          <a href="/pipelines/geospatial-data-pipelines/">Pipeline code</a>
         </div>
       </section>
 
-      <!-- Project 2 -->
       <section class="card">
         <h2>ACS Census Tract–Level Data Processing</h2>
-        <div class="meta">
-          Data cleaning & aggregation pipeline • Python / ArcGIS Pro
-        </div>
+        <div class="meta">Data cleaning & aggregation pipeline • Python / ArcGIS Pro</div>
 
         <ul>
           <li>Processed ACS 5-year estimates at the tract level</li>
@@ -129,19 +113,31 @@
         </ul>
 
         <div class="links">
-          <a href="acs-ct.html">Project page</a>
-          <a href="../pipelines/geospatial-data-pipelines/">Pipeline code</a>
+          <a href="/projects/acs-ct.html">Project page</a>
+          <a href="/pipelines/geospatial-data-pipelines/">Pipeline code</a>
         </div>
       </section>
 
-      <!-- Placeholder for future projects -->
+      <section class="card">
+        <h2>PITC × ACS Correlations (p5.js)</h2>
+        <div class="meta">Interactive map + Pearson r panel • p5.js • CSV + GeoJSON</div>
+
+        <ul>
+          <li>Loads tract GeoJSON + year-specific ACS/PITC CSVs</li>
+          <li>Interactive pan/zoom + hover tract readouts</li>
+          <li>Computes Pearson correlations (PIT total vs ACS variables) by year</li>
+        </ul>
+
+        <div class="links">
+          <a href="/projects/pitc-acs/">Live demo</a>
+          <a href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/pitc-acs">Code</a>
+        </div>
+      </section>
+
       <section class="card">
         <h2>Additional projects (in progress)</h2>
-        <div class="meta">
-          Prototypes, validation utilities, and exploratory visualizations
-        </div>
-
-        <p>
+        <div class="meta">Prototypes, validation utilities, and exploratory visualizations</div>
+        <p style="margin: 0;">
           Additional geospatial data engineering examples will be added as pipelines
           and workflows are expanded.
         </p>
@@ -159,4 +155,3 @@
   </script>
 </body>
 </html>
-
