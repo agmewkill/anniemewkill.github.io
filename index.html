@@ -8,41 +8,74 @@
 
   <style>
     :root { color-scheme: light dark; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
-    a { color: inherit; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
     .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px; }
     header { display: grid; gap: 14px; padding: 18px 0 8px; }
     .kicker { font-size: 0.95rem; opacity: 0.8; margin: 0; }
     h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 0; letter-spacing: -0.02em; }
     .lead { font-size: 1.05rem; max-width: 70ch; margin: 0; opacity: 0.9; }
-    .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
     .btn {
-      display: inline-block; padding: 10px 14px; border: 1px solid rgba(127,127,127,0.35);
-      border-radius: 12px; text-decoration: none; font-weight: 600;
+      padding: 10px 14px;
+      border: 1px solid rgba(127,127,127,0.35);
+      border-radius: 12px;
+      font-weight: 600;
     }
     .btn.primary { border-color: rgba(127,127,127,0.55); }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 22px; }
-    @media (min-width: 820px) { .grid { grid-template-columns: 1.15fr 0.85fr; } }
-    .card {
-      border: 1px solid rgba(127,127,127,0.25); border-radius: 16px;
-      padding: 16px; background: rgba(127,127,127,0.06);
-    }
-    .card h2 { margin: 0 0 10px; font-size: 1.15rem; letter-spacing: -0.01em; }
-    .card p { margin: 0 0 10px; opacity: 0.92; }
-    .list { margin: 0; padding-left: 18px; }
-    .list li { margin: 6px 0; }
+
     .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .pill {
-      font-size: 0.9rem; padding: 6px 10px; border: 1px solid rgba(127,127,127,0.25);
-      border-radius: 999px; background: rgba(127,127,127,0.05);
+      font-size: 0.9rem;
+      padding: 6px 10px;
+      border: 1px solid rgba(127,127,127,0.25);
+      border-radius: 999px;
+      background: rgba(127,127,127,0.05);
     }
-    .proj { display: grid; gap: 8px; margin-top: 6px; }
-    .proj a { text-decoration: none; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    @media (min-width: 820px) {
+      .grid { grid-template-columns: 1.15fr 0.85fr; }
+    }
+
+    .card {
+      border: 1px solid rgba(127,127,127,0.25);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(127,127,127,0.06);
+    }
+    .card h2 { margin: 0 0 10px; font-size: 1.15rem; }
+    .card p { margin: 0 0 10px; opacity: 0.92; }
+
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+
+    .proj { display: grid; gap: 8px; }
     .proj .title { font-weight: 700; }
     .proj .meta { font-size: 0.95rem; opacity: 0.85; }
-    footer { margin-top: 26px; padding-top: 16px; border-top: 1px solid rgba(127,127,127,0.2); opacity: 0.85; }
-    .small { font-size: 0.95rem; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 0.95em; }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(127,127,127,0.2);
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 
@@ -56,20 +89,16 @@
         cleaning, validating, and transforming geospatial datasets for downstream analysis and visualization.
       </p>
 
+      <!-- Navigation: everything reachable in 1 click -->
       <div class="btns">
-        <a class="btn primary" href="projects/index.html">View Projects</a>
-
-        <!-- Pipeline folder inside this repo -->
-        <a class="btn" href="pipelines/geospatial-data-pipelines/">Geospatial Pipelines</a>
-
-        <!-- Add your resume PDF to /assets/pdfs/ and update filename -->
+        <a class="btn primary" href="projects/index.html">Projects</a>
+        <a class="btn" href="pipelines/geospatial-data-pipelines/">Pipelines</a>
         <a class="btn" href="assets/pdfs/Annie_Mewkill_Resume.pdf">Resume (PDF)</a>
-
-        <a class="btn" href="https://github.com/anniemewkill">GitHub</a>
+        <a class="btn" href="https://github.com/agmewkill">GitHub</a>
         <a class="btn" href="mailto:agmewkill@gmail.com">Email</a>
       </div>
 
-      <div class="pillrow" aria-label="Key tools">
+      <div class="pillrow">
         <span class="pill">Python (pandas, GeoPandas)</span>
         <span class="pill">R (sf, tidyverse)</span>
         <span class="pill">ArcGIS Pro</span>
@@ -86,11 +115,11 @@
           I build practical, testable workflows for geospatial datasets—turning raw inputs into analysis-ready outputs.
           I’m especially comfortable with messy real-world data and documenting repeatable processes.
         </p>
-        <ul class="list">
-          <li>Ingest + standardize geospatial and tabular datasets (Census/ACS, TIGER/Line)</li>
+        <ul>
+          <li>Ingest and standardize geospatial and tabular datasets (Census/ACS, TIGER/Line)</li>
           <li>Transform data (clean fields, normalize schemas, spatial joins, aggregation)</li>
-          <li>Validate outputs (basic QA checks, geometry sanity checks, schema consistency)</li>
-          <li>Deliver outputs for teams via maps, lightweight demos, and clear documentation</li>
+          <li>Validate outputs (geometry checks, QA, schema consistency)</li>
+          <li>Deliver outputs via maps, demos, and clear documentation</li>
         </ul>
       </div>
 
@@ -99,62 +128,47 @@
         <div class="proj">
           <a href="projects/encampments-leaflet.html">
             <div class="title">Homeless Encampments & Social Determinants of Health (San Diego)</div>
-            <div class="meta">End-to-end workflow + interactive Leaflet map • GeoPandas • ACS/ZCTAs</div>
+            <div class="meta">End-to-end workflow + Leaflet map • GeoPandas • ACS/ZCTAs</div>
           </a>
 
           <a href="projects/acs-ct.html">
             <div class="title">ACS Census Tract–Level Data Processing</div>
-            <div class="meta">Cleaning + aggregation pipeline for tract-level indicators • TIGER/Line • ArcGIS Pro</div>
+            <div class="meta">Cleaning + aggregation pipeline • TIGER/Line • ArcGIS Pro</div>
           </a>
 
           <a href="projects/p5-viz.html">
             <div class="title">Exploratory Spatial Visualization (p5.js)</div>
-            <div class="meta">Interactive prototype for exploring spatial patterns • JavaScript • p5.js</div>
+            <div class="meta">Interactive prototype • JavaScript • p5.js</div>
           </a>
         </div>
-        <p class="small" style="margin-top: 12px;">
-          See the full list: <a href="projects/index.html">projects/index.html</a>
-        </p>
       </div>
     </section>
 
-    <section class="grid" style="margin-top: 14px;">
+    <section class="grid">
       <div class="card">
         <h2>Geospatial pipeline focus</h2>
-        <p class="small">
-          If you’re hiring for a geospatial data engineering role, start here:
-          <a href="pipelines/geospatial-data-pipelines/">pipelines/geospatial-data-pipelines</a>.
-          This pipeline folder documents ingestion → transform → validation → outputs.
-          For the code view on GitHub:
-          <a href="https://github.com/anniemewkill/anniemewkill.github.io/tree/main/pipelines/geospatial-data-pipelines">repo/tree link</a>.
+        <p>
+          Start here:
+          <a href="pipelines/geospatial-data-pipelines/">
+            pipelines/geospatial-data-pipelines
+          </a>
+          — a structured example of ingest → transform → validate workflows with schema documentation.
         </p>
-        <ul class="list">
-          <li><code>scripts/ingest/</code> download + standardize raw inputs</li>
-          <li><code>scripts/transform/</code> clean/normalize + spatial operations</li>
-          <li><code>scripts/validate/</code> QA checks and geometry validation</li>
-          <li><code>data/schemas/</code> lightweight schema notes</li>
-        </ul>
       </div>
 
       <div class="card">
         <h2>Currently learning</h2>
-        <p class="small">
-          Building toward production data systems: Dockerized workflows, PostGIS fundamentals, and API patterns (FastAPI)
-          through iterative improvements to these geospatial ETL projects.
-        </p>
-        <ul class="list">
-          <li>Docker: containerizing repeatable scripts</li>
-          <li>PostGIS: spatial storage + indexing fundamentals</li>
-          <li>FastAPI: simple endpoints for data access (prototype stage)</li>
+        <ul>
+          <li>Docker for repeatable geospatial workflows</li>
+          <li>PostGIS fundamentals (storage, indexing)</li>
+          <li>FastAPI patterns for data access (prototype stage)</li>
         </ul>
       </div>
     </section>
 
     <footer>
-      <div class="small">
-        © <span id="year"></span> Annie Mewkill · San Diego, CA ·
-        <a href="mailto:agmewkill@gmail.com">agmewkill@gmail.com</a>
-      </div>
+      © <span id="year"></span> Annie Mewkill · San Diego, CA ·
+      <a href="mailto:agmewkill@gmail.com">agmewkill@gmail.com</a>
     </footer>
   </div>
 
