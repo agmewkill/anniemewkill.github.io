@@ -1,0 +1,63 @@
+# variables.R — ACS variables used in this project
+
+AGE_VARS <- c(
+  # Male
+  "B01001_003","B01001_004","B01001_005","B01001_006","B01001_007",
+  "B01001_008","B01001_009","B01001_010","B01001_011","B01001_012",
+  "B01001_013","B01001_014","B01001_015","B01001_016","B01001_017",
+  "B01001_018","B01001_019","B01001_020","B01001_021","B01001_022",
+  "B01001_023","B01001_024","B01001_025",
+  # Female
+  "B01001_027","B01001_028","B01001_029","B01001_030","B01001_031",
+  "B01001_032","B01001_033","B01001_034","B01001_035","B01001_036",
+  "B01001_037","B01001_038","B01001_039","B01001_040","B01001_041",
+  "B01001_042","B01001_043","B01001_044","B01001_045","B01001_046",
+  "B01001_047","B01001_048","B01001_049"
+)
+
+ACS_VARS <- c(
+  TotalPop = "B01003_001",
+  Male = "B01001_002",
+  Female = "B01001_026",
+  White = "B02001_002",
+  Black = "B02001_003",
+  Asian = "B02001_005",
+  AmericanIndian = "B02001_004",
+  NativeHawaiianOtherPacificIslander = "B02001_006",
+  OtherRaceOne = "B02001_007",
+  TotalHispanic = "B03002_012",
+  NonHispWhite = "B03002_003",
+  NonHispBlack = "B03002_004",
+  NonHispAsian = "B03002_006",
+  Pop5andOlder = "B16004_001",
+  Pop5andOlderEnglish = "B16004_002",
+  Pop5andOlderSpanish = "B16004_005",
+  Pop5andOlderSpanishEnglishWell = "B16004_006",
+  Pop5andOlderSpanishEnglishnotWell = "B16004_007",
+  Pop5andOlderAsian = "B16004_013",
+  Pop5andOlderAsianEnWell = "B16004_014",
+  Pop5andOlderAsianEnnotWell = "B16004_015",
+  Pop5andOlderother = "B16004_020",
+  Pop5andOlderotherEnWell = "B16004_021",
+  Pop5andOlderotherEnnotWell = "B16004_022",
+  pop25Older = "B15001_001",
+  pop25OlderLess9 = "B15001_002",
+  pop25Older9_12Grade = "B15001_003",
+  pop25OlderHighSch = "B15001_004",
+  pop25OlderCollege = "B15001_005",
+  pop25OlderAssociate = "B15001_006",
+  pop25OlderBachelor = "B15001_007",
+  pop25OlderMaster = "B15001_008",
+  HouseholdwithCash = "B19058_002",
+  HouseHoldwithChildren18 = "B11005_002",
+  Professional = "C24010_003",
+  Armedforced = "C24010_004",
+  Married = "B12001_002",
+  UnemployedCvilian = "B23025_005",
+  PopPivertyDetermined = "B17001_001",
+  PopBelowpoverty = "B17001_002",
+  MedianIcome = "B19013_001",
+  Foreignborn = "B05002_013",
+  PopInsurance = "B27001_001",
+  PopDisability = "B18101_001"
+)
