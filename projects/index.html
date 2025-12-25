@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Projects by Annie Mewkill: privacy-preserving geospatial analysis, interactive mapping, and open-source civic data tools." />
+  <meta name="description" content="Projects by Annie Mewkill: privacy-preserving tract-level analysis, interactive mapping, and civic geospatial data tooling." />
   <title>Projects — Annie Mewkill</title>
 
   <style>
@@ -29,7 +29,7 @@
 
     header { display: grid; gap: 10px; }
     h1 { margin: 0; font-size: 2rem; letter-spacing: -0.02em; }
-    .lead { margin: 0; max-width: 80ch; opacity: 0.9; }
+    .lead { margin: 0; max-width: 85ch; opacity: 0.9; }
 
     .grid { display: grid; gap: 16px; margin-top: 16px; }
 
@@ -51,9 +51,9 @@
       background: rgba(127,127,127,0.08);
       margin-left: 8px;
       vertical-align: middle;
-      font-weight: 800;
+      font-weight: 900;
+      letter-spacing: 0.02em;
     }
-    .badge.wip { opacity: 0.95; }
 
     ul { margin: 10px 0 0; padding-left: 18px; }
     li { margin: 6px 0; }
@@ -63,12 +63,13 @@
       padding: 8px 12px;
       border: 1px solid rgba(127,127,127,0.35);
       border-radius: 12px;
-      font-weight: 800;
+      font-weight: 850;
       background: rgba(127,127,127,0.06);
+      display: inline-block;
     }
     .chip:hover { background: rgba(127,127,127,0.12); }
 
-    /* optional schema table */
+    /* tiny schema table (optional but nice for “serious WIP”) */
     .schema-wrap {
       margin-top: 12px;
       overflow-x: auto;
@@ -88,21 +89,20 @@
 <body>
   <div class="wrap">
 
-    <!-- shared topbar -->
     <nav class="topbar" aria-label="Site navigation">
       <a class="btn" href="/">← Home</a>
       <a class="btn primary" href="/projects/">Projects</a>
       <a class="btn" href="/pipelines/">Pipelines</a>
       <a class="btn" href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
       <a class="btn" href="https://github.com/agmewkill">GitHub</a>
+      <a class="btn" href="mailto:agmewkill@gmail.com">Email</a>
     </nav>
 
     <header>
       <h1>Projects</h1>
       <p class="lead">
-        End-to-end geospatial work that emphasizes reproducible pipelines, schema clarity, QA checks,
-        and privacy-preserving analysis. Where relevant, each project links to a pipeline folder that
-        shows the ingest → validate → publish process.
+        Selected work demonstrating geospatial ingestion, cleaning, validation, and publishing.
+        Projects link to code and (when applicable) pipeline folders that show the engineering steps.
       </p>
     </header>
 
@@ -110,47 +110,41 @@
 
       <!-- Encampments -->
       <section class="card">
-        <h2>
-          Homeless Encampments × Social Determinants of Health (San Diego)
-        </h2>
+        <h2>Encampments × ACS (San Diego)</h2>
         <p class="meta">Tract-level analysis • privacy-preserving aggregation • join via <code>GEOID</code></p>
 
         <ul>
-          <li>Encampment data is already aggregated by census tract (no point-level locations)</li>
-          <li>ACS indicators cleaned/normalized and joined to outcomes via tract identifiers</li>
-          <li>Outputs a modeling-ready tract table + documentation for descriptives and regression</li>
+          <li>Encampment counts are tract-aggregated (no point-level locations)</li>
+          <li>ACS indicators standardized + documented for comparability</li>
+          <li>Produces an analysis-ready tract table for descriptives and modeling</li>
         </ul>
 
         <div class="links">
           <a class="chip" href="/projects/encampments/">Project page</a>
           <a class="chip" href="/projects/encampments/thesis-context.html">Thesis context</a>
-          <a class="chip" href="/pipelines/geospatial-data-pipelines/">Pipeline patterns</a>
           <a class="chip" href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/encampments">Code</a>
+          <a class="chip" href="/pipelines/geospatial-data-pipelines/">Pipeline patterns</a>
           <a class="chip" href="/projects/pitc-acs-correlation.html">Related: PITC × ACS</a>
         </div>
       </section>
 
       <!-- Bathrooms -->
       <section class="card">
-        <h2>
-          San Diego Public Bathroom Audit
-          <span class="badge wip">IN PROGRESS</span>
-        </h2>
-        <p class="meta">Open-source map + validation pipeline • user submissions → canonical dataset</p>
+        <h2>San Diego Public Bathroom Access Audit <span class="badge">IN PROGRESS</span></h2>
+        <p class="meta">Open map + validation pipeline • user submissions → canonical dataset</p>
 
         <ul>
-          <li>Goal: publish an auditable, analysis-ready bathroom access dataset (GeoJSON/CSV/Parquet)</li>
-          <li>User-submitted points are treated as inputs and must pass QA before canonical publish</li>
-          <li>Designed for both engineering (ETL, schema, QA) and policy (coverage gaps, accessibility)</li>
+          <li>Goal: an auditable, continuously improving dataset of public bathroom access across the county</li>
+          <li>Raw submissions are treated as inputs; QA gates decide what enters the canonical layer</li>
+          <li>Designed for engineering (ETL, schema, QA) and policy (coverage gaps, accessibility, prioritization)</li>
         </ul>
 
-        <!-- optional: tiny schema table (high-level) -->
-        <div class="schema-wrap" aria-label="Bathroom audit data model schema overview">
+        <div class="schema-wrap" aria-label="Bathroom audit data model overview">
           <table class="schema">
             <thead>
               <tr>
                 <th>Layer</th>
-                <th>Purpose</th>
+                <th>What it is</th>
                 <th>Key field(s)</th>
                 <th>Example fields</th>
               </tr>
@@ -170,7 +164,7 @@
               </tr>
               <tr>
                 <td><strong>Policy summaries</strong></td>
-                <td>Reporting & gap analysis</td>
+                <td>Reporting + gap analysis outputs</td>
                 <td><code>area_id</code>, <code>time_window</code></td>
                 <td><code>coverage_rate</code>, <code>ada_share</code>, <code>priority_score</code></td>
               </tr>
@@ -181,7 +175,7 @@
         <div class="links">
           <a class="chip" href="/projects/bathrooms/">Project page</a>
           <a class="chip" href="/pipelines/bathrooms/">Pipeline (WIP)</a>
-          <a class="chip" href="https://github.com/agmewkill">Repo (soon)</a>
+          <a class="chip" href="https://github.com/agmewkill">Repo (coming)</a>
         </div>
       </section>
 
@@ -191,8 +185,8 @@
         <p class="meta">Methods write-up + interactive demo • client-side CSV + GeoJSON</p>
 
         <ul>
-          <li>Explains data sources, assumptions, and interpretation of correlations</li>
-          <li>Interactive demo for exploratory QA and communication</li>
+          <li>Write-up: sources, assumptions, and interpretation</li>
+          <li>Demo: interactive tract map + correlation panel for exploratory QA/communication</li>
         </ul>
 
         <div class="links">
@@ -215,4 +209,3 @@
   </script>
 </body>
 </html>
-
