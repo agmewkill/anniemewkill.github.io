@@ -50,7 +50,8 @@
       background: rgba(127,127,127,0.08);
       margin-left: 8px;
       vertical-align: middle;
-      font-weight: 800;
+      font-weight: 900;
+      letter-spacing: 0.02em;
     }
 
     ul { margin: 10px 0 0; padding-left: 18px; }
@@ -61,8 +62,9 @@
       padding: 8px 12px;
       border: 1px solid rgba(127,127,127,0.35);
       border-radius: 12px;
-      font-weight: 800;
+      font-weight: 850;
       background: rgba(127,127,127,0.06);
+      display: inline-block;
     }
     .chip:hover { background: rgba(127,127,127,0.12); }
 
@@ -80,13 +82,14 @@
       <a class="btn primary" href="/pipelines/">Pipelines</a>
       <a class="btn" href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
       <a class="btn" href="https://github.com/agmewkill">GitHub</a>
+      <a class="btn" href="mailto:agmewkill@gmail.com">Email</a>
     </nav>
 
     <header>
       <h1>Pipelines</h1>
       <p class="lead">
         Pipeline folders show how I structure ingest → validate → publish workflows with schema documentation,
-        QA checks, and reproducible outputs. These are the “engineering” counterparts to the project write-ups.
+        QA checks, and reproducible outputs. These are the engineering counterparts to project write-ups.
       </p>
     </header>
 
@@ -99,7 +102,7 @@
         <ul>
           <li>Reusable structure for ingest, transform, validate, and publish</li>
           <li>Explicit schema docs + stable joins (e.g., <code>GEOID</code>)</li>
-          <li>Designed to be extended to PostGIS/FastAPI later</li>
+          <li>Designed to extend to PostGIS/FastAPI later</li>
         </ul>
 
         <div class="links">
@@ -113,9 +116,9 @@
         <p class="meta">User submissions → QA → canonical dataset publish</p>
 
         <ul>
-          <li>Ingest ArcGIS Online export + user-submitted intake (form)</li>
-          <li>Validate: schema, bounds, duplicates, and categorical standardization</li>
-          <li>Publish: GeoJSON/CSV/Parquet + summary tables for policy reporting</li>
+          <li>Ingest ArcGIS Online export + user-submitted intake (survey/form)</li>
+          <li>Validate: schema, bounds, duplicates, categorical standardization</li>
+          <li>Publish: GeoJSON/CSV/Parquet + optional policy summary tables</li>
         </ul>
 
         <div class="links">
