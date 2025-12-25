@@ -3,247 +3,203 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GIS and geospatial data engineering projects by Annie Mewkill." />
+  <meta name="description" content="Projects by Annie Mewkill: privacy-preserving geospatial analysis, interactive mapping, and open-source civic data tools." />
   <title>Projects — Annie Mewkill</title>
 
   <style>
     :root { color-scheme: light dark; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-    }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
     a { color: inherit; text-decoration: none; }
     .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px; }
 
-    header { display: grid; gap: 12px; }
-
-    .home-btn {
-      display: inline-block;
-      width: fit-content;
+    /* shared topbar */
+    .topbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .btn {
       padding: 10px 14px;
       border: 1px solid rgba(127,127,127,0.35);
       border-radius: 14px;
       font-weight: 800;
-      background: rgba(127,127,127,0.12);
+      background: rgba(127,127,127,0.10);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .home-btn:hover { background: rgba(127,127,127,0.2); }
+    .btn:hover { background: rgba(127,127,127,0.18); }
+    .btn.primary { border-color: rgba(127,127,127,0.55); background: rgba(127,127,127,0.14); }
 
+    header { display: grid; gap: 10px; }
     h1 { margin: 0; font-size: 2rem; letter-spacing: -0.02em; }
-    .lead { max-width: 70ch; opacity: 0.9; margin: 0; }
+    .lead { margin: 0; max-width: 80ch; opacity: 0.9; }
 
-    .nav {
-      display: flex;
-      gap: 10px;
-      margin: 8px 0 10px;
-      flex-wrap: wrap;
-    }
-    .nav a {
-      padding: 8px 12px;
-      border: 1px solid rgba(127,127,127,0.35);
-      border-radius: 12px;
-      font-weight: 650;
-      background: rgba(127,127,127,0.06);
-    }
-    .nav a:hover { background: rgba(127,127,127,0.12); }
-
-    .grid { display: grid; gap: 16px; margin-top: 10px; }
+    .grid { display: grid; gap: 16px; margin-top: 16px; }
 
     .card {
       border: 1px solid rgba(127,127,127,0.25);
       border-radius: 16px;
       padding: 16px;
-      background: rgba(127,127,127,0.05);
+      background: rgba(127,127,127,0.06);
     }
-
     .card h2 { margin: 0 0 6px; font-size: 1.2rem; }
-
-    .meta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-bottom: 10px;
-    }
+    .meta { margin: 0 0 10px; opacity: 0.85; font-size: 0.95rem; }
 
     .badge {
       display: inline-block;
+      font-size: 0.85rem;
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(127,127,127,0.35);
       background: rgba(127,127,127,0.08);
+      margin-left: 8px;
+      vertical-align: middle;
       font-weight: 800;
-      font-size: 0.85rem;
-      opacity: 1;
     }
+    .badge.wip { opacity: 0.95; }
 
-    ul { margin: 8px 0 12px; padding-left: 18px; }
-    li { margin: 4px 0; }
+    ul { margin: 10px 0 0; padding-left: 18px; }
+    li { margin: 6px 0; }
 
-    .links a {
-      display: inline-block;
-      margin: 6px 12px 0 0;
-      font-weight: 750;
+    .links { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip {
       padding: 8px 12px;
       border: 1px solid rgba(127,127,127,0.35);
       border-radius: 12px;
+      font-weight: 800;
       background: rgba(127,127,127,0.06);
     }
-    .links a:hover { background: rgba(127,127,127,0.12); }
+    .chip:hover { background: rgba(127,127,127,0.12); }
 
-    /* tiny schema table */
+    /* optional schema table */
     .schema-wrap {
-      margin-top: 10px;
+      margin-top: 12px;
       overflow-x: auto;
       border-radius: 14px;
       border: 1px solid rgba(127,127,127,0.25);
       background: rgba(127,127,127,0.03);
     }
-    table.schema {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-      min-width: 720px;
-    }
-    .schema th, .schema td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(127,127,127,0.18);
-      vertical-align: top;
-    }
-    .schema th { font-weight: 800; opacity: 0.95; }
-    .schema td code { font-size: 0.92em; }
+    table.schema { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
+    .schema th, .schema td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(127,127,127,0.18); vertical-align: top; }
+    .schema th { font-weight: 900; opacity: 0.95; }
+    code { font-size: 0.95em; }
 
-    footer {
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(127,127,127,0.2);
-      opacity: 0.85;
-      font-size: 0.95rem;
-    }
+    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(127,127,127,0.2); opacity: 0.85; font-size: 0.95rem; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header>
-      <a href="/" class="home-btn" aria-label="Back to home page">← Home</a>
 
+    <!-- shared topbar -->
+    <nav class="topbar" aria-label="Site navigation">
+      <a class="btn" href="/">← Home</a>
+      <a class="btn primary" href="/projects/">Projects</a>
+      <a class="btn" href="/pipelines/">Pipelines</a>
+      <a class="btn" href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
+      <a class="btn" href="https://github.com/agmewkill">GitHub</a>
+    </nav>
+
+    <header>
       <h1>Projects</h1>
       <p class="lead">
-        Selected projects demonstrating geospatial data ingestion, transformation,
-        validation, and visualization — with reproducible workflows and analysis-ready outputs.
+        End-to-end geospatial work that emphasizes reproducible pipelines, schema clarity, QA checks,
+        and privacy-preserving analysis. Where relevant, each project links to a pipeline folder that
+        shows the ingest → validate → publish process.
       </p>
-
-      <nav class="nav" aria-label="Site navigation">
-        <a href="/pipelines/geospatial-data-pipelines/">Pipelines</a>
-        <a href="/assets/pdfs/Annie_Mewkill_Resume.pdf">Resume</a>
-        <a href="https://github.com/agmewkill">GitHub</a>
-      </nav>
     </header>
 
     <main class="grid">
 
-      <!-- Encampments project -->
+      <!-- Encampments -->
       <section class="card">
-        <h2>Homeless Encampments & Social Determinants of Health (San Diego)</h2>
-        <div class="meta">
-          <span>Tract-level analysis • Privacy-preserving aggregation • ACS + census geography</span>
-        </div>
+        <h2>
+          Homeless Encampments × Social Determinants of Health (San Diego)
+        </h2>
+        <p class="meta">Tract-level analysis • privacy-preserving aggregation • join via <code>GEOID</code></p>
 
         <ul>
-          <li>Encampment counts are aggregated to census tract for safety/anonymity (no point-level locations)</li>
-          <li>Merged outcomes with ACS indicators via tract identifier join (<code>GEOID</code>)</li>
-          <li>Produced analysis-ready tables for descriptives and statistical modeling</li>
+          <li>Encampment data is already aggregated by census tract (no point-level locations)</li>
+          <li>ACS indicators cleaned/normalized and joined to outcomes via tract identifiers</li>
+          <li>Outputs a modeling-ready tract table + documentation for descriptives and regression</li>
         </ul>
 
         <div class="links">
-          <a href="/projects/encampments/">Project</a>
-          <a href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/encampments">Code</a>
-          <a href="/projects/pitc-acs-correlation.html">Related: PITC × ACS</a>
+          <a class="chip" href="/projects/encampments/">Project page</a>
+          <a class="chip" href="/projects/encampments/thesis-context.html">Thesis context</a>
+          <a class="chip" href="/pipelines/geospatial-data-pipelines/">Pipeline patterns</a>
+          <a class="chip" href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/encampments">Code</a>
+          <a class="chip" href="/projects/pitc-acs-correlation.html">Related: PITC × ACS</a>
         </div>
       </section>
 
-      <!-- Bathrooms project -->
+      <!-- Bathrooms -->
       <section class="card">
-        <h2>San Diego Public Bathroom Audit</h2>
-        <div class="meta">
-          <span class="badge">In progress (v0.x)</span>
-          <span>Open map + validation pipeline • Policy-ready dataset • User submissions</span>
-        </div>
+        <h2>
+          San Diego Public Bathroom Audit
+          <span class="badge wip">IN PROGRESS</span>
+        </h2>
+        <p class="meta">Open-source map + validation pipeline • user submissions → canonical dataset</p>
 
         <ul>
-          <li>Seeded from an ArcGIS Online prototype; migrating to an open-source ingestion + QA pipeline</li>
-          <li>Append-only submissions → validation/dedupe → canonical dataset (GeoJSON/CSV/Parquet)</li>
-          <li>Designed to serve both engineering workflows and policy reporting</li>
+          <li>Goal: publish an auditable, analysis-ready bathroom access dataset (GeoJSON/CSV/Parquet)</li>
+          <li>User-submitted points are treated as inputs and must pass QA before canonical publish</li>
+          <li>Designed for both engineering (ETL, schema, QA) and policy (coverage gaps, accessibility)</li>
         </ul>
 
-        <div class="schema-wrap" aria-label="Bathrooms dataset schema overview">
+        <!-- optional: tiny schema table (high-level) -->
+        <div class="schema-wrap" aria-label="Bathroom audit data model schema overview">
           <table class="schema">
             <thead>
               <tr>
                 <th>Layer</th>
-                <th>Record type</th>
+                <th>Purpose</th>
                 <th>Key field(s)</th>
                 <th>Example fields</th>
-                <th>Guarantee</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Submissions</strong> (raw)</td>
-                <td>Append-only log</td>
-                <td><code>submission_id</code></td>
-                <td><code>submitted_at</code>, <code>lat</code>, <code>lon</code>, <code>open_to_public</code></td>
-                <td>Unverified input</td>
+                <td>Append-only intake log</td>
+                <td><code>submission_id</code>, <code>submitted_at</code></td>
+                <td><code>lat</code>, <code>lon</code>, <code>open_to_public</code>, <code>accessible_ada</code></td>
               </tr>
               <tr>
-                <td><strong>Canonical</strong> (validated)</td>
-                <td>Curated truth</td>
-                <td><code>bathroom_id</code></td>
-                <td><code>status</code>, <code>last_verified_at</code>, <code>accessible_ada</code>, <code>hours</code></td>
-                <td>QA’d + deduped</td>
+                <td><strong>Canonical bathrooms</strong></td>
+                <td>Validated “best current truth”</td>
+                <td><code>bathroom_id</code>, <code>last_verified_at</code></td>
+                <td><code>status</code>, <code>hours</code>, <code>requires_purchase</code></td>
+              </tr>
+              <tr>
+                <td><strong>Policy summaries</strong></td>
+                <td>Reporting & gap analysis</td>
+                <td><code>area_id</code>, <code>time_window</code></td>
+                <td><code>coverage_rate</code>, <code>ada_share</code>, <code>priority_score</code></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="links">
-          <!-- Create these pages/paths in your repo -->
-          <a href="/projects/bathrooms/">Project</a>
-          <a href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/bathrooms">Code</a>
-          <a href="/pipelines/geospatial-data-pipelines/">Pipeline pattern</a>
+          <a class="chip" href="/projects/bathrooms/">Project page</a>
+          <a class="chip" href="/pipelines/bathrooms/">Pipeline (WIP)</a>
+          <a class="chip" href="https://github.com/agmewkill">Repo (soon)</a>
         </div>
       </section>
 
-      <!-- PITC × ACS project -->
+      <!-- PITC -->
       <section class="card">
         <h2>PITC × ACS Correlations (p5.js)</h2>
-        <div class="meta">
-          <span>Methods write-up + interactive demo • CSV + GeoJSON • client-side QA/communication</span>
-        </div>
+        <p class="meta">Methods write-up + interactive demo • client-side CSV + GeoJSON</p>
 
         <ul>
-          <li>Write-up: sources, assumptions, and interpretation</li>
-          <li>Demo: tract map + correlation panel (Pearson r) by year</li>
-          <li>Designed for exploratory validation and storytelling</li>
+          <li>Explains data sources, assumptions, and interpretation of correlations</li>
+          <li>Interactive demo for exploratory QA and communication</li>
         </ul>
 
         <div class="links">
-          <a href="/projects/pitc-acs-correlation.html">Write-up</a>
-          <a href="/projects/pitc-acs/">Live demo</a>
-          <a href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/pitc-acs">Code</a>
+          <a class="chip" href="/projects/pitc-acs-correlation.html">Write-up</a>
+          <a class="chip" href="/projects/pitc-acs/">Live demo</a>
+          <a class="chip" href="https://github.com/agmewkill/agmewkill.github.io/tree/main/projects/pitc-acs">Code</a>
         </div>
-      </section>
-
-      <section class="card">
-        <h2>Additional projects (in progress)</h2>
-        <div class="meta">Prototypes, validation utilities, and exploratory workflows</div>
-        <p style="margin: 0;">
-          More examples will be added as pipelines and analyses are expanded.
-        </p>
       </section>
 
     </main>
@@ -251,6 +207,7 @@
     <footer>
       © <span id="year"></span> Annie Mewkill
     </footer>
+
   </div>
 
   <script>
@@ -258,3 +215,4 @@
   </script>
 </body>
 </html>
+
